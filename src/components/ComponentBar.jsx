@@ -11,12 +11,12 @@ const ComponentBar = () => {
     dispatch(componentDraggerActions.setComponent({comp: item}))
   };
   return (
-    <div className="w-full">
+    <div className="w-full mt-4">
       {preDefinedComponents.map((item) => {
         return (
           <div
             key={item.id}
-            className="border border-violet-300 w-full rounded p-4 my-8"
+            className="border border-violet-300 w-full rounded p-4 mb-4"
             draggable
             onDragStart={(e) => handleDrag(e, item)}
           >

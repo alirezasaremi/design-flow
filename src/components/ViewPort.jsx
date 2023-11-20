@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPercentageBetweenTwoNumbers } from "../helper";
 import { componentDraggerActions } from "../store/slices/componentDragger";
 
-const ViewPort = () => {
+const ViewPort = ({ onComponentClick }) => {
   const viewports = useSelector((state) => state.viewportManager);
   const compDragger = useSelector((state) => state.componentDragger);
   const dispatch = useDispatch();
@@ -60,7 +60,7 @@ const ViewPort = () => {
           </div>
 
           <div
-            className="border border-gray-500 p-1 rounded-lg h-full"
+            className="border border-gray-500 p-1 rounded-lg h-full overflow-y-auto"
             style={{
               width: `${
                 zoomPercent ? zoomPercent + "%" : activeViewport.width + "px"
@@ -79,7 +79,7 @@ const ViewPort = () => {
 
             {compWrapper &&
               compWrapper.map((item, index) => {
-                return <div key={index}>{item.component}</div>;
+                return <div onClick={()=>{onComponentClick()}} className="hover:border-dashed hover:border hover:border-sky-500" key={index}>{item.component}</div>;
               })}
           </div>
         </>
